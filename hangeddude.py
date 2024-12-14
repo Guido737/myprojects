@@ -3,6 +3,7 @@ import os
 
 word_list = ['hipnotized', 'soup', 'orgy', 'buffalo', 'space', 'miracle', 'douchebag']
 
+
 def choose_word():
     return random.choice(word_list)
 
