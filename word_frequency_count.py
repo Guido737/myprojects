@@ -25,6 +25,6 @@ def count_words(file_path, top_n=5):
     for word, count in most_common_words:
         print(f"{word}: {count}")
         
-file_path = '/home/usernamezero00/Desktop/wordfrequency.txt' 
+file_path = 'file name or file path' 
 count_words(file_path, top_n=5)
 
