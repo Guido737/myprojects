@@ -4,7 +4,7 @@ import time
 
 def get_data():
     url = "https://api.coincap.io/v2/assets"
-    params = {"limit": 20}  
+    params = {"limit": 15}  
     try:
         response = requests.get(url, params=params)
         datas = response.json()
