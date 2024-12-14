@@ -1,6 +1,6 @@
 import requests
 import sys
-API_KEY = '40e151f43a8da63402abb3c21eaeabbb'
+API_KEY = 'input your api-key'
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 AVAILABLE_OPTIONS = {
     'temperature': 'Temperature (in Celsius)',
