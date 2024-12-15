@@ -1,11 +1,11 @@
 import random
 import os
 
-word_list = ['hipnotized', 'soup', 'orgy', 'buffalo', 'space', 'miracle', 'douchebag']
-
-
 def choose_word():
-    return random.choice(word_list)
+    with open("file name or file path", "r") as file:
+        word_list = file.readlines()
+    filtered_words = [word.strip().lower() for word in word_list if 4 <= len(word.strip()) <= 8]
+    return random.choice(filtered_words)
 
 def display_word(word, guessed_letters):
     return ''.join([letter if letter in guessed_letters else '_' for letter in word])
