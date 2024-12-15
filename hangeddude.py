@@ -2,12 +2,30 @@ import requests
 import random
 import os
 
+API_KEY = 'input your API_KEY'
+BASE_URL = "https://api.wordnik.com/v4/words.json/randomWord"
+PARAMS = {
+    "hasDictionaryDef": "true",
+    "minLength": 5,
+    "maxLength": 8,
+    "apiKey": API_KEY
+}
+
 def choose_word():
-    Word_site = "http://svnweb.freebsd.org/csrg/share/dict/words?view=co&content-type=text/plain"
-    response = requests.get(Word_site)
-    WORDS = response.content.splitlines()
-    filtered_words = [word.decode('utf-8').strip().lower() for word in WORDS if 4 <= len(word.decode('utf-8').strip()) <= 8]
-    return random.choice(filtered_words)
+    try:
+        
+        response = requests.get(BASE_URL, params=PARAMS)
+        
+        if response.status_code == 200:
+            word = response.json()['word']
+            return word.lower()  
+        else:
+            print(f"Failed to fetch word. Status code: {response.status_code}")
+            return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error during request: {e}")
+        return None
+
 
 def display_word(word, guessed_letters):
     return ''.join([letter if letter in guessed_letters else '_' for letter in word])
