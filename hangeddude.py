@@ -2,14 +2,11 @@ import requests
 import random
 import os
 
-API_KEY = 'input your API_KEY'
-BASE_URL = "https://api.wordnik.com/v4/words.json/randomWord"
+BASE_URL = "https://random-word-api.herokuapp.com/word"
 PARAMS = {
-    "hasDictionaryDef": "true",
-    "minLength": 5,
-    "maxLength": 8,
-    "apiKey": API_KEY
+    "number": 1  
 }
+
 
 def choose_word():
     try:
@@ -17,7 +14,7 @@ def choose_word():
         response = requests.get(BASE_URL, params=PARAMS)
         
         if response.status_code == 200:
-            word = response.json()['word']
+            word = response.json()[0]
             return word.lower()  
         else:
             print(f"Failed to fetch word. Status code: {response.status_code}")
