@@ -1,10 +1,12 @@
+import requests
 import random
 import os
 
 def choose_word():
-    with open("file name or file path", "r") as file:
-        word_list = file.readlines()
-    filtered_words = [word.strip().lower() for word in word_list if 4 <= len(word.strip()) <= 8]
+    Word_site = "http://svnweb.freebsd.org/csrg/share/dict/words?view=co&content-type=text/plain"
+    response = requests.get(Word_site)
+    WORDS = response.content.splitlines()
+    filtered_words = [word.decode('utf-8').strip().lower() for word in WORDS if 4 <= len(word.decode('utf-8').strip()) <= 8]
     return random.choice(filtered_words)
 
 def display_word(word, guessed_letters):
