@@ -7,7 +7,6 @@ def print_board(board):
         if i < 2:
             print("-" * 5)
 
-
 def check_win(board, player):
     for row in board:
         if all([cell == player for cell in row]):
@@ -20,7 +19,6 @@ def check_win(board, player):
     if board[0][2] == player and board[1][1] == player and board[2][0] == player:
         return True
     return False
-
 
 def check_draw(board):
     for row in board:
