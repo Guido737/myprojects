@@ -17,8 +17,10 @@ def get_data():
 def filter_name(datas, name):
     return [i for i in datas if name.lower() in i["name"].lower()]
 
+
 def filter_value(datas, value):
     return [i for i in datas if float(i["priceUsd"]) > value]
+
 
 def output_data(datas):
     for data in datas:

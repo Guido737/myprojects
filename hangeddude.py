@@ -1,10 +1,28 @@
+import requests
 import random
 import os
 
-word_list = ['hipnotized', 'soup', 'orgy', 'buffalo', 'space', 'miracle', 'douchebag']
+BASE_URL = "https://random-word-api.herokuapp.com/word"
+PARAMS = {
+    "number": 1  
+}
+
 
 def choose_word():
-    return random.choice(word_list)
+    try:
+        
+        response = requests.get(BASE_URL, params=PARAMS)
+        
+        if response.status_code == 200:
+            word = response.json()[0]
+            return word.lower()  
+        else:
+            print(f"Failed to fetch word. Status code: {response.status_code}")
+            return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error during request: {e}")
+        return None
+
 
 def display_word(word, guessed_letters):
     return ''.join([letter if letter in guessed_letters else '_' for letter in word])

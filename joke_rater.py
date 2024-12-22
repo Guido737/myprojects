@@ -1,7 +1,8 @@
 import requests
 import random
 import time
-import json
+import json  
+
 
 def fetch_joke(url):
     try:
