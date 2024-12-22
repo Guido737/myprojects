@@ -21,7 +21,7 @@ def save_to_file(news):
     print("News saved to file.")
 
 def main():
-    api_key = '8345c95a63644a2f92b60f44ebaa5d3c'
+    api_key = 'your api_key'
     query = input("Enter keyword or press Enter to skip: ")
     category = input("Enter category or press Enter to skip: ").lower()
     
